@@ -16,8 +16,9 @@ use App\Http\Controllers\ImpersonationController;
 use App\Http\Controllers\Shop\UnitController;
 use Illuminate\Support\Facades\Route;
 
-// ── Public / Welcome ───────────────────────────────────────────────────────────
+// ── Public / Welcome & About ───────────────────────────────────────────────────
 Route::inertia('/', 'welcome')->name('home');
+Route::inertia('/about', 'about')->name('about');
 
 // ── Authenticated Shop Routes ──────────────────────────────────────────────────
 Route::middleware(['auth', 'verified', 'ensure.shop.active'])

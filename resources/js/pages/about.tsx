@@ -1,0 +1,300 @@
+import { Head, Link } from '@inertiajs/react';
+import {
+    Store, CheckCircle2, ArrowRight, MessageCircle, Phone,
+    Sparkles, Printer, Users, BarChart3, Zap, ShieldCheck,
+    HelpCircle, ChevronRight, BookOpen, Layers, Shield
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
+
+export default function About() {
+    const whatsappNumber = "+8801940890210";
+    const whatsappUrl = `https://wa.me/8801940890210?text=${encodeURIComponent('Hello StoreManager Team, I would like to get help regarding using the software.')}`;
+
+    return (
+        <>
+            <Head title="আমাদের সম্পর্কে ও ব্যবহার নির্দেশিকা — StoreManager দোকান পরিচালনা সফটওয়্যার" />
+
+            <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-emerald-500 selection:text-white dark:bg-slate-950 dark:text-slate-100 font-sans">
+                {/* ── Top Bar ──────────────────────────────────────────────── */}
+                <div className="bg-emerald-900 text-emerald-100 text-xs py-2 px-4 border-b border-emerald-800">
+                    <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+                        <div className="flex items-center gap-2">
+                            <span className="inline-flex items-center gap-1 bg-emerald-700/60 text-emerald-200 px-2 py-0.5 rounded-full font-medium text-[11px]">
+                                <Sparkles className="w-3 h-3 text-amber-400" /> ব্যবহার সহায়িকা
+                            </span>
+                            <span>সহজ নির্দেশিকা ও পরিচিতি</span>
+                        </div>
+                        <a
+                            href={whatsappUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-1.5 font-semibold text-emerald-300 hover:text-white transition-colors"
+                        >
+                            <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
+                            <span>হোয়াটসঅ্যাপ হেল্পলাইন: {whatsappNumber}</span>
+                        </a>
+                    </div>
+                </div>
+
+                {/* ── Main Sticky Navigation Bar ───────────────────────────────── */}
+                <header className="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+                        <Link href={route('home')} className="flex items-center gap-2.5 group">
+                            <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shadow-md shadow-emerald-600/20 group-hover:scale-105 transition-transform">
+                                <Store className="w-5 h-5" />
+                            </div>
+                            <div>
+                                <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+                                    Store<span className="text-emerald-600">Manager</span>
+                                </span>
+                                <span className="block text-[10px] text-muted-foreground uppercase tracking-wider font-semibold -mt-1">
+                                    দোকান পরিচালনা সফটওয়্যার
+                                </span>
+                            </div>
+                        </Link>
+
+                        <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600 dark:text-slate-300">
+                            <Link href={route('home')} className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                                হোমপেজ
+                            </Link>
+                            <a href="#how-it-works" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                                কীভাবে কাজ করে
+                            </a>
+                            <a href="#mission" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                                আমাদের লক্ষ্য
+                            </a>
+                            <a href="#modules" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                                মূল মডিউলসমূহ
+                            </a>
+                        </nav>
+
+                        <div className="flex items-center gap-3">
+                            <Link href={route('login')}>
+                                <Button variant="ghost" size="sm" className="text-xs sm:text-sm font-medium">
+                                    লগইন
+                                </Button>
+                            </Link>
+                            <Link href={route('register')}>
+                                <Button className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm shadow-sm">
+                                    দোকান নিবন্ধন
+                                </Button>
+                            </Link>
+                        </div>
+                    </div>
+                </header>
+
+                {/* ── Hero Section ────────────────────────────────────────────── */}
+                <section className="py-16 lg:py-24 bg-gradient-to-b from-emerald-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-950 border-b border-slate-200 dark:border-slate-800">
+                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 text-xs font-semibold">
+                            <BookOpen className="w-3.5 h-3.5 text-emerald-600" />
+                            আমাদের লক্ষ্য ও সফটওয়্যার পরিচিতি
+                        </div>
+                        <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight">
+                            বাংলাদেশের প্রতিটি রিটেইল দোকানকে সহজে ডিজিটাল করার অঙ্গীকার
+                        </h1>
+                        <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
+                            মুদি দোকানদার ও খুচরা ব্যবসায়ীদের প্রতিদিনের বাকির খাতার অনিশ্চয়তা, মালামাল শেষের জটিলতা এবং দিনশেষে খাঁটি লাভ না জানতে পারার চিরাচরিত সমস্যা দূর করতেই StoreManager তৈরি।
+                        </p>
+                    </div>
+                </section>
+
+                {/* ── Our Story & Vision ───────────────────────────────────────── */}
+                <section id="mission" className="py-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+                    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                            <div className="space-y-4">
+                                <span className="text-xs font-bold uppercase tracking-wider text-emerald-600">কেন এই সফটওয়্যার?</span>
+                                <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
+                                    কাগজের খাতা হারিয়ে যেতে পারে, কিন্তু আপনার ব্যবসার হিসাব থাকবে আজীবন
+                                </h2>
+                                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                    একটি সাধারণ মুদি বা খুচরা দোকানে শত শত পণ্য থাকে। বিভিন্ন দামে মাল কেনা হয়, বাকিতে বিক্রি হয় এবং ক্যাশ বাক্সে নানা সময়ে টাকা আসে ও খরচ হয়। দিনশেষে হিসাব মেলাতে গিয়ে বেশিরভাগ দোকানদার বুঝতে পারেন না মাস শেষে তার ব্যবসা সত্যি লাভে আছে নাকি লোকসানে।
+                                </p>
+                                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                    <strong>StoreManager</strong> কোনো জটিল বা কঠিন সফটওয়্যার নয়। এটি এমনভাবে ডিজাইন করা হয়েছে যাতে যে কেউ ৫ মিনিটে শিখে নিজের দোকান একা নিজেই পরিচালনা করতে পারেন।
+                                </p>
+                            </div>
+
+                            <div className="bg-slate-50 dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-4">
+                                <h4 className="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
+                                    <ShieldCheck className="w-5 h-5 text-emerald-600" />
+                                    আমাদের ৪টি মূল অঙ্গীকার
+                                </h4>
+                                <ul className="space-y-3 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                                    <li className="flex items-start gap-2.5">
+                                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                                        <span><strong>১০০% নিখুঁত লাভ:</strong> প্রতিটি বিক্রিতে গড়ে কত কেনা দাম ছিল তার ভিত্তিতে আসল লাভ দেখানো।</span>
+                                    </li>
+                                    <li className="flex items-start gap-2.5">
+                                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                                        <span><strong>বাকির খাতার পূর্ণ নিরাপত্তা:</strong> কাস্টমার কবে কত নিল এবং দিল—সব ডিজিটাল ট্র্যাকিং।</span>
+                                    </li>
+                                    <li className="flex items-start gap-2.5">
+                                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                                        <span><strong>কর্মচারীর কাছ থেকে কেনা দাম গোপন:</strong> ক্যাশিয়ারের কাছে দোকানের মোট লাভ বা কেনা দাম গোপন রাখা।</span>
+                                    </li>
+                                    <li className="flex items-start gap-2.5">
+                                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                                        <span><strong>সহজ ও বাংলাবান্ধব:</strong> কোনো কঠিন অ্যাকাউন্টিং জ্ঞান ছাড়াই সাধারণ দোকানদারদের সহজে ব্যবহার উপযোগী।</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* ── Detailed Step-by-Step Guide ─────────────────────────────── */}
+                <section id="how-it-works" className="py-20 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800">
+                    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="text-center max-w-2xl mx-auto mb-16 space-y-2">
+                            <span className="text-xs font-bold uppercase tracking-wider text-emerald-600">ব্যবহার সহায়িকা</span>
+                            <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white">
+                                যেভাবে খুব সহজে সফটওয়্যারটি ব্যবহার করবেন
+                            </h2>
+                        </div>
+
+                        <div className="space-y-6">
+                            {[
+                                {
+                                    step: '১',
+                                    title: 'শপ রেজিস্ট্রেশন ও সেটআপ (মাত্র ১ মিনিট)',
+                                    desc: 'আপনার দোকানের নাম, মোবাইল নম্বর এবং ঠিকানা দিয়ে একটি অ্যাকাউন্ট তৈরি করুন। এটি সম্পূর্ণ সুরক্ষিত এবং শুধুমাত্র আপনার দখলেই থাকবে।',
+                                },
+                                {
+                                    step: '২',
+                                    title: 'ক্যাটাগরি ও পণ্য ইনপুট',
+                                    desc: 'দোকানের প্রধান পণ্যগুলো যুক্ত করুন। প্রতিটি পণ্যের বারকোড (থাকলে), পরিমাপের একক (কেজি/পিস/প্যাকেট), ক্রয়মূল্য এবং বিক্রয়মূল্য এন্ট্রি দিন।',
+                                },
+                                {
+                                    step: '৩',
+                                    title: 'কাউন্টারে দ্রুত বিক্রি ও স্লিপ প্রিন্ট (F2 শর্টকাট)',
+                                    desc: 'কীবোর্ডের F2 বাটনে ক্লিক করে সরাসরি বিক্রি শুরু করুন। বারকোড স্ক্যানার দিয়ে স্ক্যান করলেই আইটেম কার্টে চলে আসবে। নগদ বা বাকিতে বিক্রি করে কাস্টমারকে থার্মাল রিসিট দিন।',
+                                },
+                                {
+                                    step: '৪',
+                                    title: 'কাস্টমার বাকি আদায় ও লেজার আপডেট',
+                                    desc: 'যেকোনো কাস্টমার যখন বাকি টাকা পরিশোধ করতে আসবে, কাস্টমারের নামের পাশে "বাকি আদায়" বাটনে ক্লিক করে টাকার পরিমাণ লিখলেই রিসিট জেনারেট হবে এবং স্বয়ংক্রিয়ভাবে বাকি কমে যাবে।',
+                                },
+                                {
+                                    step: '৫',
+                                    title: 'দিনশেষে ড্যাশবোর্ডে আসল লাভ পর্যবেক্ষণ',
+                                    desc: 'দোকান বন্ধ করার সময় ড্যাশবোর্ডে প্রবেশ করুন। আজকের মোট কত টাকা বিক্রি হলো, কত খরচ হলো এবং কত খাঁটি লাভ হলো—সব এক নজরে দেখে নিশ্চিন্তে বাড়ি ফিরুন।',
+                                },
+                            ].map((s, idx) => (
+                                <div key={idx} className="flex gap-4 p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+                                    <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white font-bold text-base flex items-center justify-center shrink-0">
+                                        {s.step}
+                                    </div>
+                                    <div className="space-y-1">
+                                        <h4 className="font-bold text-base text-slate-900 dark:text-white">{s.title}</h4>
+                                        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{s.desc}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* ── Key Modules Overview ────────────────────────────────────── */}
+                <section id="modules" className="py-20 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="text-center max-w-2xl mx-auto mb-14 space-y-2">
+                            <span className="text-xs font-bold uppercase tracking-wider text-emerald-600">মূল ফিচার মডিউল</span>
+                            <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white">
+                                দোকানের প্রতিটি বিভাগের জন্য বিশেষায়িত মডিউল
+                            </h2>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-2.5">
+                                <div className="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-600 flex items-center justify-center">
+                                    <Zap className="w-5 h-5" />
+                                </div>
+                                <h4 className="font-bold text-sm text-slate-900 dark:text-white">১. পিওএস ও বিক্রয় কাউন্টার</h4>
+                                <p className="text-xs text-slate-600 dark:text-slate-400">বারকোড সাপোর্ট, ক্যাশ ও বাকি পেমেন্ট ক্যালকুলেটর, থার্মাল প্রিন্টিং।</p>
+                            </div>
+
+                            <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-2.5">
+                                <div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-600 flex items-center justify-center">
+                                    <Layers className="w-5 h-5" />
+                                </div>
+                                <h4 className="font-bold text-sm text-slate-900 dark:text-white">২. স্মার্ট স্টক ও ক্রয়মূল্য</h4>
+                                <p className="text-xs text-slate-600 dark:text-slate-400">মাল ক্রয় এন্ট্রি, গড় কেনা দাম হিসাব, লো-স্টক ওয়ার্নিং ও স্টক ট্র্যাকিং।</p>
+                            </div>
+
+                            <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-2.5">
+                                <div className="w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-950 text-purple-600 flex items-center justify-center">
+                                    <Users className="w-5 h-5" />
+                                </div>
+                                <h4 className="font-bold text-sm text-slate-900 dark:text-white">৩. ডিজিটাল বাকির খাতা</h4>
+                                <p className="text-xs text-slate-600 dark:text-slate-400">কাস্টমার ও সাপ্লায়ারদের দেনা-পাওনা লেজার ও পেমেন্ট হিস্ট্রি।</p>
+                            </div>
+
+                            <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-2.5">
+                                <div className="w-10 h-10 rounded-lg bg-rose-100 dark:bg-rose-950 text-rose-600 flex items-center justify-center">
+                                    <BarChart3 className="w-5 h-5" />
+                                </div>
+                                <h4 className="font-bold text-sm text-slate-900 dark:text-white">৪. ৯টি বিস্তারিত রিপোর্ট</h4>
+                                <p className="text-xs text-slate-600 dark:text-slate-400">দৈনিক বিক্রি, খরচ, লাভ-ক্ষতি ও মোট সম্পদের এক্সেল ডাউনলোড।</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* ── WhatsApp Direct Support Banner ──────────────────────────── */}
+                <section className="py-16 bg-slate-50 dark:bg-slate-950">
+                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+                        <div className="w-14 h-14 rounded-2xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 flex items-center justify-center mx-auto shadow-xs">
+                            <MessageCircle className="w-7 h-7" />
+                        </div>
+                        <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+                            সফটওয়্যারটি কীভাবে ব্যবহার করবেন বুঝতে সমস্যা হচ্ছে?
+                        </h3>
+                        <p className="text-slate-600 dark:text-slate-400 text-sm max-w-xl mx-auto">
+                            আমাদের কাস্টমার কেয়ার টিম আপনাকে হাতে-কলমে সফটওয়্যারটি সেটআপ করতে সাহায্য করতে সদা প্রস্তুত। সরাসরি হোয়াটসঅ্যাপে মেসেজ করুন।
+                        </p>
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                            <a
+                                href={whatsappUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-sm shadow-md transition-all"
+                            >
+                                <MessageCircle className="w-5 h-5" />
+                                হোয়াটসঅ্যাপে মেসেজ করুন ({whatsappNumber})
+                            </a>
+                            <Link href={route('register')}>
+                                <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm px-6 py-6">
+                                    বিনামূল্যে ট্রায়াল শুরু করুন
+                                </Button>
+                            </Link>
+                        </div>
+                    </div>
+                </section>
+
+                {/* ── Footer ─────────────────────────────────────────────────── */}
+                <footer className="bg-slate-900 text-slate-400 text-xs py-10 border-t border-slate-800">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div className="flex items-center gap-2">
+                            <div className="w-7 h-7 rounded-lg bg-emerald-600 text-white flex items-center justify-center">
+                                <Store className="w-4 h-4" />
+                            </div>
+                            <span className="text-base font-bold text-white">
+                                Store<span className="text-emerald-500">Manager</span>
+                            </span>
+                        </div>
+                        <p className="text-slate-500">© {new Date().getFullYear()} StoreManager. সর্বস্বত্ব সংরক্ষিত।</p>
+                        <div className="flex items-center gap-4">
+                            <Link href={route('home')} className="hover:text-white">হোমপেজ</Link>
+                            <Link href={route('login')} className="hover:text-white">লগইন</Link>
+                            <a href={whatsappUrl} target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline">
+                                WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </>
+    );
+}

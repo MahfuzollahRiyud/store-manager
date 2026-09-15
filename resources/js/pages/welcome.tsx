@@ -1,386 +1,730 @@
 import { Head, Link, usePage } from '@inertiajs/react';
+import {
+    Store, ShoppingCart, BarChart3, ShieldCheck, CheckCircle2,
+    ArrowRight, MessageCircle, Phone, Sparkles, Printer,
+    CreditCard, Users, Layers, AlertCircle, HelpCircle,
+    ChevronRight, Check, Zap, EyeOff, FileSpreadsheet, Lock
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export default function Welcome() {
-    const { auth } = usePage().props;
+    const { auth } = usePage().props as any;
+    const whatsappNumber = "+8801940890210";
+    const whatsappUrl = `https://wa.me/8801940890210?text=${encodeURIComponent('Hello StoreManager Team, I would like to know more about the store management software.')}`;
 
     return (
         <>
-            <Head title="StoreManager — Retail POS & Inventory SaaS" />
-            <div className="flex min-h-screen flex-col items-center bg-[#FDFDFC] p-6 text-[#1b1b18] lg:justify-center lg:p-8 dark:bg-[#0a0a0a]">
-                <header className="mb-6 w-full max-w-[335px] text-sm not-has-[nav]:hidden lg:max-w-4xl">
-                    <nav className="flex items-center justify-end gap-4">
-                        {auth.user ? (
-                            <Link
-                                href={route('shop.dashboard')}
-                                className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
+            <Head title="StoreManager — মুদি, স্টেশনারি ও রিটেইল দোকানের আধুনিক ডিজিটাল সফটওয়্যার" />
+
+            <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-emerald-500 selection:text-white dark:bg-slate-950 dark:text-slate-100 font-sans">
+                {/* ── Top Announcement & WhatsApp Contact Bar ────────────────────── */}
+                <div className="bg-emerald-900 text-emerald-100 text-xs py-2 px-4 border-b border-emerald-800">
+                    <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+                        <div className="flex items-center gap-2">
+                            <span className="inline-flex items-center gap-1 bg-emerald-700/60 text-emerald-200 px-2 py-0.5 rounded-full font-medium text-[11px]">
+                                <Sparkles className="w-3 h-3 text-amber-400" /> নতুন সংস্করণ
+                            </span>
+                            <span>বাংলাদেশের রিটেইল ও মুদি দোকানের ১০০% নির্ভরযোগ্য ডিজিটাল সমাধান</span>
+                        </div>
+                        <div className="flex items-center gap-4">
+                            <a
+                                href={whatsappUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="inline-flex items-center gap-1.5 font-semibold text-emerald-300 hover:text-white transition-colors"
                             >
-                                Dashboard
+                                <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
+                                <span>হোয়াটসঅ্যাপ হেল্পলাইন: {whatsappNumber}</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                {/* ── Main Sticky Navigation Bar ───────────────────────────────── */}
+                <header className="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-all">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+                        {/* Logo */}
+                        <Link href={route('home')} className="flex items-center gap-2.5 group">
+                            <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shadow-md shadow-emerald-600/20 group-hover:scale-105 transition-transform">
+                                <Store className="w-5 h-5" />
+                            </div>
+                            <div>
+                                <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+                                    Store<span className="text-emerald-600">Manager</span>
+                                </span>
+                                <span className="block text-[10px] text-muted-foreground uppercase tracking-wider font-semibold -mt-1">
+                                    দোকান পরিচালনা সফটওয়্যার
+                                </span>
+                            </div>
+                        </Link>
+
+                        {/* Navigation Links */}
+                        <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600 dark:text-slate-300">
+                            <a href="#features" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                                ফিচারসমূহ
+                            </a>
+                            <a href="#how-it-works" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                                কীভাবে কাজ করে
+                            </a>
+                            <a href="#comparison" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                                সনাতন বনাম ডিজিটাল
+                            </a>
+                            <a href="#demo" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                                লাইভ ডেমো
+                            </a>
+                            <Link href={route('about')} className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                                আমাদের সম্পর্কে
                             </Link>
-                        ) : (
-                            <>
-                                <Link
-                                    href={route('login')}
-                                    className="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
-                                >
-                                    Log in
+                        </nav>
+
+                        {/* Action Buttons */}
+                        <div className="flex items-center gap-3">
+                            <a
+                                href={whatsappUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-emerald-300 dark:border-emerald-700 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 text-xs font-semibold hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors"
+                            >
+                                <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+                                WhatsApp
+                            </a>
+
+                            {auth?.user ? (
+                                <Link href={route('shop.dashboard')}>
+                                    <Button className="bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm gap-1.5 text-xs sm:text-sm">
+                                        ড্যাশবোর্ডে যান <ArrowRight className="w-4 h-4" />
+                                    </Button>
                                 </Link>
-                                <Link
-                                    href={route('register')}
-                                    className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
-                                >
-                                    Register Shop
-                                </Link>
-                            </>
-                        )}
-                    </nav>
+                            ) : (
+                                <>
+                                    <Link href={route('login')}>
+                                        <Button variant="ghost" size="sm" className="text-xs sm:text-sm font-medium">
+                                            লগইন
+                                        </Button>
+                                    </Link>
+                                    <Link href={route('register')}>
+                                        <Button className="bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm shadow-emerald-600/20 text-xs sm:text-sm">
+                                            দোকান নিবন্ধন
+                                        </Button>
+                                    </Link>
+                                </>
+                            )}
+                        </div>
+                    </div>
                 </header>
-                <div className="flex w-full items-center justify-center opacity-100 transition-opacity duration-750 lg:grow starting:opacity-0">
-                    <main className="flex w-full max-w-[335px] flex-col-reverse lg:max-w-4xl lg:flex-row">
-                        <div className="flex-1 rounded-br-lg rounded-bl-lg bg-white p-6 pb-12 text-[13px] leading-[20px] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] lg:rounded-tl-lg lg:rounded-br-none lg:p-20 dark:bg-[#161615] dark:text-[#EDEDEC] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]">
-                            <h1 className="mb-1 font-medium">
-                                Let's get started
-                            </h1>
-                            <p className="mb-2 text-[#706f6c] dark:text-[#A1A09A]">
-                                Laravel has an incredibly rich ecosystem.
-                                <br />
-                                We suggest starting with the following.
-                            </p>
-                            <ul className="mb-4 flex flex-col lg:mb-6">
-                                <li className="relative flex items-center gap-4 py-2 before:absolute before:top-1/2 before:bottom-0 before:left-[0.4rem] before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A]">
-                                    <span className="relative bg-white py-1 dark:bg-[#161615]">
-                                        <span className="flex h-3.5 w-3.5 items-center justify-center rounded-full border border-[#e3e3e0] bg-[#FDFDFC] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.03),0px_1px_2px_0px_rgba(0,0,0,0.06)] dark:border-[#3E3E3A] dark:bg-[#161615]">
-                                            <span className="h-1.5 w-1.5 rounded-full bg-[#dbdbd7] dark:bg-[#3E3E3A]" />
-                                        </span>
-                                    </span>
-                                    <span>
-                                        Read the
-                                        <a
-                                            href="https://laravel.com/docs"
-                                            target="_blank"
-                                            className="ml-1 inline-flex items-center space-x-1 font-medium text-[#f53003] underline underline-offset-4 dark:text-[#FF4433]"
-                                        >
-                                            <span>Documentation</span>
-                                            <svg
-                                                width={10}
-                                                height={11}
-                                                viewBox="0 0 10 11"
-                                                fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                className="h-2.5 w-2.5"
-                                            >
-                                                <path
-                                                    d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001"
-                                                    stroke="currentColor"
-                                                    strokeLinecap="square"
-                                                />
-                                            </svg>
-                                        </a>
-                                    </span>
-                                </li>
-                                <li className="relative flex items-center gap-4 py-2 before:absolute before:top-0 before:bottom-1/2 before:left-[0.4rem] before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A]">
-                                    <span className="relative bg-white py-1 dark:bg-[#161615]">
-                                        <span className="flex h-3.5 w-3.5 items-center justify-center rounded-full border border-[#e3e3e0] bg-[#FDFDFC] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.03),0px_1px_2px_0px_rgba(0,0,0,0.06)] dark:border-[#3E3E3A] dark:bg-[#161615]">
-                                            <span className="h-1.5 w-1.5 rounded-full bg-[#dbdbd7] dark:bg-[#3E3E3A]" />
-                                        </span>
-                                    </span>
-                                    <span>
-                                        Watch video tutorials at
-                                        <a
-                                            href="https://laracasts.com"
-                                            target="_blank"
-                                            className="ml-1 inline-flex items-center space-x-1 font-medium text-[#f53003] underline underline-offset-4 dark:text-[#FF4433]"
-                                        >
-                                            <span>Laracasts</span>
-                                            <svg
-                                                width={10}
-                                                height={11}
-                                                viewBox="0 0 10 11"
-                                                fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                className="h-2.5 w-2.5"
-                                            >
-                                                <path
-                                                    d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001"
-                                                    stroke="currentColor"
-                                                    strokeLinecap="square"
-                                                />
-                                            </svg>
-                                        </a>
-                                    </span>
-                                </li>
-                            </ul>
-                            <ul className="flex gap-3 text-sm leading-normal">
-                                <li>
+
+                {/* ── Hero Section ────────────────────────────────────────────── */}
+                <section className="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28 border-b border-slate-200/80 dark:border-slate-800/80 bg-gradient-to-b from-white via-slate-50 to-slate-100 dark:from-slate-900 dark:via-slate-950 dark:to-slate-950">
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-emerald-100/50 via-transparent to-transparent dark:from-emerald-950/30 dark:via-transparent pointer-events-none" />
+
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                            {/* Left Text Column */}
+                            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+                                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs font-semibold shadow-xs">
+                                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                                    মুদি ও রিটেইল দোকানের ১০০% নির্ভুল হিসাব
+                                </div>
+
+                                <h1 className="text-3xl sm:text-5xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.25]">
+                                    খাতার হিসাব বাদ দিন,{' '}
+                                    <span className="text-emerald-600 dark:text-emerald-400 underline decoration-emerald-300 underline-offset-8">
+                                        ডিজিটাল দোকানে
+                                    </span>{' '}
+                                    আসল লাভ ও বাকির হিসাব রাখুন সহজে
+                                </h1>
+
+                                <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                                    বারকোড দিয়ে চোখের পলকে বিক্রি, গ্রাহকের ডিজিটাল বাকির খাতা, পণ্য শেষ হওয়ার আগেই স্টক ওয়ার্নিং, এবং প্রতিটি পণ্যে দৈনিক আসল লাভ জানার জন্য বাংলাদেশের সেরা দোকান পরিচালনা সফটওয়্যার।
+                                </p>
+
+                                {/* Hero CTAs */}
+                                <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
+                                    <Link href={route('register')} className="w-full sm:w-auto">
+                                        <Button size="lg" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-7 py-6 text-base font-semibold shadow-lg shadow-emerald-600/25 gap-2">
+                                            বিনামূল্যে দোকান রেজিস্টার করুন <ArrowRight className="w-4 h-4" />
+                                        </Button>
+                                    </Link>
+
+                                    <a href="#demo" className="w-full sm:w-auto">
+                                        <Button size="lg" variant="outline" className="w-full px-6 py-6 text-base font-medium border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 gap-2">
+                                            লাইভ ডেমো টেস্ট করুন
+                                        </Button>
+                                    </a>
+
                                     <a
-                                        href="https://cloud.laravel.com"
+                                        href={whatsappUrl}
                                         target="_blank"
-                                        className="inline-block rounded-sm border border-black bg-[#1b1b18] px-5 py-1.5 text-sm leading-normal text-white hover:border-black hover:bg-black dark:border-[#eeeeec] dark:bg-[#eeeeec] dark:text-[#1C1C1A] dark:hover:border-white dark:hover:bg-white"
+                                        rel="noreferrer"
+                                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-[#25D366] hover:bg-[#20ba59] text-white font-semibold text-sm transition-all shadow-md shadow-emerald-600/10"
                                     >
-                                        Deploy now
+                                        <MessageCircle className="w-4 h-4" />
+                                        হোয়াটসঅ্যাপ: {whatsappNumber}
+                                    </a>
+                                </div>
+
+                                {/* Micro highlights */}
+                                <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-500 dark:text-slate-400">
+                                    <div className="flex items-center gap-1.5">
+                                        <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                                        <span>কোনো ইনস্টলেশন ঝামেলা নেই</span>
+                                    </div>
+                                    <div className="flex items-center gap-1.5">
+                                        <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                                        <span>মোবাইল ও পিসি উভয়েই চলে</span>
+                                    </div>
+                                    <div className="flex items-center gap-1.5">
+                                        <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                                        <span>থার্মাল রিসিট প্রিন্ট সাপোর্ট</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Right Visual Card Column */}
+                            <div className="lg:col-span-5">
+                                <div className="relative mx-auto max-w-md lg:max-w-none">
+                                    {/* Decorative glow */}
+                                    <div className="absolute -inset-1 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-400 opacity-25 blur-xl" />
+
+                                    {/* Interactive Mockup Container */}
+                                    <div className="relative rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden p-5 space-y-4">
+                                        {/* Mock Header */}
+                                        <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+                                            <div className="flex items-center gap-2">
+                                                <div className="w-3 h-3 rounded-full bg-rose-500" />
+                                                <div className="w-3 h-3 rounded-full bg-amber-500" />
+                                                <div className="w-3 h-3 rounded-full bg-emerald-500" />
+                                                <span className="text-xs font-bold text-slate-700 dark:text-slate-200 ml-2">
+                                                    রহমান জেনারেল স্টোর (POS Counter)
+                                                </span>
+                                            </div>
+                                            <span className="text-[11px] bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-bold px-2 py-0.5 rounded">
+                                                লাইভ কাউন্টার
+                                            </span>
+                                        </div>
+
+                                        {/* Today's Quick Stats Grid */}
+                                        <div className="grid grid-cols-2 gap-3">
+                                            <div className="bg-emerald-50/80 dark:bg-emerald-950/40 p-3 rounded-xl border border-emerald-200/60 dark:border-emerald-800/40">
+                                                <p className="text-[11px] text-emerald-800 dark:text-emerald-300 font-medium">আজকের মোট বিক্রি</p>
+                                                <p className="text-xl font-bold text-emerald-900 dark:text-emerald-100 mt-0.5 font-mono">৳ ২৪,৫৬০</p>
+                                                <p className="text-[10px] text-emerald-700 dark:text-emerald-400 mt-1">৪৮টি অর্ডার সম্পন্ন</p>
+                                            </div>
+                                            <div className="bg-blue-50/80 dark:bg-blue-950/40 p-3 rounded-xl border border-blue-200/60 dark:border-blue-800/40">
+                                                <p className="text-[11px] text-blue-800 dark:text-blue-300 font-medium">আজকের আসল লাভ</p>
+                                                <p className="text-xl font-bold text-blue-900 dark:text-blue-100 mt-0.5 font-mono">৳ ৪,২৮০</p>
+                                                <p className="text-[10px] text-blue-700 dark:text-blue-400 mt-1">গড় মুনাফা ১৭.৪%</p>
+                                            </div>
+                                        </div>
+
+                                        {/* Real-time Cart Preview */}
+                                        <div className="space-y-2 bg-slate-50 dark:bg-slate-800/50 p-3 rounded-xl border border-slate-100 dark:border-slate-800 text-xs">
+                                            <div className="flex items-center justify-between text-slate-500 font-medium pb-1 border-b border-slate-200/60 dark:border-slate-700">
+                                                <span>পণ্য (আইটেম)</span>
+                                                <span>পরিমাণ × মূল্য</span>
+                                                <span>মোট</span>
+                                            </div>
+                                            <div className="flex items-center justify-between py-1">
+                                                <span className="font-semibold text-slate-800 dark:text-slate-200">তীর সয়াবিন তেল (৫ লিটার)</span>
+                                                <span className="text-slate-500">১ × ৳ ৮৯০</span>
+                                                <span className="font-mono font-bold">৳ ৮৯০</span>
+                                            </div>
+                                            <div className="flex items-center justify-between py-1">
+                                                <span className="font-semibold text-slate-800 dark:text-slate-200">মিনিকেট চাল (২৫ কেজি)</span>
+                                                <span className="text-slate-500">১ × ৳ ১,৭৫০</span>
+                                                <span className="font-mono font-bold">৳ ১,৭৫০</span>
+                                            </div>
+                                            <div className="flex items-center justify-between py-1">
+                                                <span className="font-semibold text-slate-800 dark:text-slate-200">ডোনা চিনি (১ কেজি)</span>
+                                                <span className="text-slate-500">২ × ৳ ১৩৫</span>
+                                                <span className="font-mono font-bold">৳ ২৭০</span>
+                                            </div>
+                                            <div className="pt-2 border-t border-dashed border-slate-300 dark:border-slate-700 flex items-center justify-between font-bold text-sm">
+                                                <span>সর্বমোট পরিশোধ:</span>
+                                                <span className="text-emerald-600 dark:text-emerald-400 font-mono text-base">৳ ২,৯১০</span>
+                                            </div>
+                                        </div>
+
+                                        {/* Floating Badge */}
+                                        <div className="flex items-center justify-between text-xs bg-amber-50 dark:bg-amber-950/40 text-amber-900 dark:text-amber-200 p-2.5 rounded-lg border border-amber-200 dark:border-amber-800">
+                                            <span className="flex items-center gap-1.5 font-medium">
+                                                <Printer className="w-3.5 h-3.5 text-amber-600" /> থার্মাল রিসিট প্রস্তুত
+                                            </span>
+                                            <span className="font-bold text-emerald-600 dark:text-emerald-400">কাস্টমার বাকি: ৳ ০</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* ── Target Business Categories ─────────────────────────────── */}
+                <section className="py-12 bg-white dark:bg-slate-900 border-b border-slate-200/80 dark:border-slate-800">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <p className="text-center text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 font-bold mb-6">
+                            যেসব ব্যবসার জন্য StoreManager বিশেষভাবে তৈরি
+                        </p>
+                        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                            {[
+                                { title: 'মুদি দোকান ও সুপার শপ', desc: 'দৈনন্দিন নিত্যপণ্য ও তেল-চালের হিসাব', icon: Store },
+                                { title: 'বই ও স্টেশনারি', desc: 'খাতা, কলম ও স্টেশনারির ভ্যারাইটি স্টক', icon: Layers },
+                                { title: 'কসমেটিক্স ও প্লাস্টিক', desc: 'লেডিস কর্নার ও বিভিন্ন ব্র্যান্ডেড আইটেম', icon: Sparkles },
+                                { title: 'হার্ডওয়্যার ও ইলেকট্রনিক্স', desc: 'সিরিয়াল ও ক্যাটাগরিভিত্তিক স্টক হিসাব', icon: Zap },
+                                { title: 'জেনারেল রিটেইল স্টোর', desc: 'নগদ ও বাকিতে পাইকারি ও খুচরা বিক্রয়', icon: ShoppingCart },
+                            ].map((item, idx) => (
+                                <div key={idx} className="flex flex-col items-center text-center p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60 hover:border-emerald-500 transition-colors">
+                                    <div className="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 flex items-center justify-center mb-2.5">
+                                        <item.icon className="w-5 h-5" />
+                                    </div>
+                                    <h4 className="font-bold text-sm text-slate-800 dark:text-slate-100">{item.title}</h4>
+                                    <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">{item.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* ── Core Features Grid ──────────────────────────────────────── */}
+                <section id="features" className="py-20 bg-slate-50 dark:bg-slate-950">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                            <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                                পাওয়ারফুল ফিচারসমূহ
+                            </span>
+                            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">
+                                আপনার দোকানের যাবতীয় কাজ এখন হবে নিমিষেই
+                            </h2>
+                            <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
+                                জটিল খাতা-কলম আর ক্যালকুলেটরের দিন শেষ। আধুনিক খুচরা দোকানের সব প্রয়োজন এক জায়গায়।
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {/* Feature 1 */}
+                            <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow space-y-3">
+                                <div className="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 flex items-center justify-center">
+                                    <Zap className="w-6 h-6" />
+                                </div>
+                                <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                                    হাই-স্পিড POS ও বারকোড সেলস
+                                </h3>
+                                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                                    কীবোর্ডের <code className="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded font-bold text-emerald-600">F2</code> চাপলেই বিক্রয় স্ক্রিন ওপেন। বারকোড স্ক্যানার দিয়ে নিমিষেই আইটেম যোগ করুন এবং ক্যাশ, বিকাশ বা বাকিতে বিক্রি করুন।
+                                </p>
+                            </div>
+
+                            {/* Feature 2 */}
+                            <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow space-y-3">
+                                <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-950 text-blue-600 flex items-center justify-center">
+                                    <Users className="w-6 h-6" />
+                                </div>
+                                <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                                    কাস্টমারের ডিজিটাল বাকির খাতা
+                                </h3>
+                                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                                    কোন কাস্টমারের কাছে কত টাকা বাকি আছে, কবে কত টাকা জমা দিয়েছে তার পূর্ণাঙ্গ লেজার খতিয়ান। ১ ক্লিকে জমা ভাউচার তৈরি করুন।
+                                </p>
+                            </div>
+
+                            {/* Feature 3 */}
+                            <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow space-y-3">
+                                <div className="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-950 text-purple-600 flex items-center justify-center">
+                                    <BarChart3 className="w-6 h-6" />
+                                </div>
+                                <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                                    প্রতিটি পণ্যে আসল লাভ হিসাব
+                                </h3>
+                                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                                    গড় ক্রয়মূল্য (Weighted Average Cost) পদ্ধতিতে সফটওয়্যার প্রতিটি পণ্যের কেনা দামের সাথে মিলিয়ে দিন শেষে আসল নিট লাভ বের করে দেয়।
+                                </p>
+                            </div>
+
+                            {/* Feature 4 */}
+                            <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow space-y-3">
+                                <div className="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-950 text-amber-600 flex items-center justify-center">
+                                    <AlertCircle className="w-6 h-6" />
+                                </div>
+                                <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                                    লো-স্টক সতর্কবার্তা ও ইনভেন্টরি
+                                </h3>
+                                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                                    দোকানের কোনো মালামাল শেষ হয়ে যাওয়ার আগেই সফটওয়্যার লাল সতর্কতা দেখাবে। নেগেটিভ বা না থাকা স্টক বিক্রি হওয়া প্রতিরোধ করা।
+                                </p>
+                            </div>
+
+                            {/* Feature 5 */}
+                            <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow space-y-3">
+                                <div className="w-12 h-12 rounded-xl bg-rose-100 dark:bg-rose-950 text-rose-600 flex items-center justify-center">
+                                    <EyeOff className="w-6 h-6" />
+                                </div>
+                                <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                                    সেলসম্যানের জন্য নিরাপদ কাউন্টার ভিউ
+                                </h3>
+                                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                                    কর্মচারী বা ক্যাশিয়ার শুধুমাত্র বিক্রি করবে। দোকানের পণ্যের কেনা দাম, মোট লাভ বা ব্যবসায়িক হিসাব কর্মচারীদের থেকে স্বয়ংক্রিয়ভাবে গোপন থাকবে।
+                                </p>
+                            </div>
+
+                            {/* Feature 6 */}
+                            <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow space-y-3">
+                                <div className="w-12 h-12 rounded-xl bg-teal-100 dark:bg-teal-950 text-teal-600 flex items-center justify-center">
+                                    <FileSpreadsheet className="w-6 h-6" />
+                                </div>
+                                <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                                    ৯টি ব্যবসায়িক রিপোর্ট ও এক্সেল এক্সপোর্ট
+                                </h3>
+                                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                                    বিক্রি, ক্রয়, লাভ-ক্ষতি, সাপ্লায়ার দেনা, কাস্টমার বাকি ও মালামালের বর্তমান মোট মূল্যের বিস্তারিত রিপোর্ট যেকোনো সময় এক ক্লিকে ডাউনলোড করুন।
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* ── Comparison: Khata vs StoreManager ─────────────────────────── */}
+                <section id="comparison" className="py-20 bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800">
+                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="text-center max-w-2xl mx-auto mb-14 space-y-2">
+                            <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                                পার্থক্য দেখুন
+                            </span>
+                            <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white">
+                                সনাতন খাতা-কলম বনাম StoreManager ডিজিটাল সমাধান
+                            </h2>
+                        </div>
+
+                        <div className="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs">
+                            <table className="w-full text-left text-xs sm:text-sm">
+                                <thead>
+                                    <tr className="border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/70">
+                                        <th className="py-4 px-5 font-bold text-slate-700 dark:text-slate-200 w-1/3">বিষয়</th>
+                                        <th className="py-4 px-5 font-bold text-rose-600 dark:text-rose-400 w-1/3">সনাতন খাতা-কলমের হিসাব</th>
+                                        <th className="py-4 px-5 font-bold text-emerald-600 dark:text-emerald-400 w-1/3 bg-emerald-50/60 dark:bg-emerald-950/30">StoreManager ডিজিটাল সফটওয়্যার</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
+                                    {[
+                                        {
+                                            topic: 'বাকির হিসাব ও প্রমাণ',
+                                            traditional: 'খাতা ছিঁড়ে গেলে বা পানি পড়লে পুরো বাকির হিসাব হারিয়ে যায়।',
+                                            storemanager: 'ক্লাউডে শতভাগ সুরক্ষিত। আজীবন কাস্টমার লেজার সংরক্ষিত থাকে।',
+                                        },
+                                        {
+                                            topic: 'আসল লাভ বের করা',
+                                            traditional: 'ক্যাশ বাক্সে থাকা টাকা দেখে অনুমান করা লাগে, লাভ হয়েছে না ক্ষতি তা অজানা থাকে।',
+                                            storemanager: 'প্রতিটি পণ্যের গড় কেনা দামের সাথে মিলিয়ে ১ ক্লিকে দিনের খাঁটি লাভ দেখা যায়।',
+                                        },
+                                        {
+                                            topic: 'স্টকের হিসাব ও ক্ষতি',
+                                            traditional: 'মাল শেষ হওয়ার পর বুঝতে পারা যায়, ফলে কাস্টমার পণ্য না পেয়ে ফিরে যায়।',
+                                            storemanager: 'স্টক নির্দিষ্ট পরিমাণের নিচে নামলেই লাল ওয়ার্নিং দেয়, সময়মতো অর্ডার করা যায়।',
+                                        },
+                                        {
+                                            topic: 'বিক্রির গতি ও রশিদ',
+                                            traditional: 'হাতে লিখে স্লিপ কাটতে কাস্টমারের লম্বা লাইন লেগে যায়।',
+                                            storemanager: 'বারকোড স্ক্যানে ২ সেকেন্ডে বিক্রি এবং থার্মাল প্রিন্টারে ৫২/৮০মিমি রশিদ প্রিন্ট।',
+                                        },
+                                        {
+                                            topic: 'কর্মচারী পরিচালনা ও নিরাপত্তা',
+                                            traditional: 'ক্যাশ কর্মচারীর হাতে ছেড়ে দিলে কেনা দাম জেনে যায় বা হিসাবে কারচুপি হতে পারে।',
+                                            storemanager: 'কর্মচারীর কাছে কেনা দাম ও মোট লাভ লুকানো থাকে। ক্যাশ ও স্টক সুরক্ষিত থাকে।',
+                                        },
+                                    ].map((row, i) => (
+                                        <tr key={i} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/40">
+                                            <td className="py-3.5 px-5 font-semibold text-slate-800 dark:text-slate-200">{row.topic}</td>
+                                            <td className="py-3.5 px-5 text-slate-600 dark:text-slate-400">{row.traditional}</td>
+                                            <td className="py-3.5 px-5 text-emerald-900 dark:text-emerald-200 font-medium bg-emerald-50/40 dark:bg-emerald-950/20">{row.storemanager}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                {/* ── How It Works (৩টি সহজ ধাপ) ─────────────────────────────── */}
+                <section id="how-it-works" className="py-20 bg-slate-50 dark:bg-slate-950">
+                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="text-center max-w-2xl mx-auto mb-16 space-y-2">
+                            <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                                ৩টি সহজ ধাপ
+                            </span>
+                            <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white">
+                                কীভাবে শুরু করবেন আপনার ডিজিটাল দোকান
+                            </h2>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                            {/* Step 1 */}
+                            <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 relative text-center space-y-3">
+                                <div className="w-12 h-12 rounded-full bg-emerald-600 text-white font-bold text-lg flex items-center justify-center mx-auto shadow-md shadow-emerald-600/20">
+                                    ১
+                                </div>
+                                <h3 className="font-bold text-lg text-slate-900 dark:text-white">
+                                    দোকান রেজিস্ট্রেশন করুন
+                                </h3>
+                                <p className="text-xs text-slate-600 dark:text-slate-400">
+                                    আপনার দোকানের নাম, মোবাইল নাম্বার ও ঠিকানা দিয়ে মাত্র ১ মিনিটে বিনামূল্যে একটি অ্যাকাউন্ট খুলুন।
+                                </p>
+                            </div>
+
+                            {/* Step 2 */}
+                            <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 relative text-center space-y-3">
+                                <div className="w-12 h-12 rounded-full bg-emerald-600 text-white font-bold text-lg flex items-center justify-center mx-auto shadow-md shadow-emerald-600/20">
+                                    ২
+                                </div>
+                                <h3 className="font-bold text-lg text-slate-900 dark:text-white">
+                                    পণ্য ও স্টক যুক্ত করুন
+                                </h3>
+                                <p className="text-xs text-slate-600 dark:text-slate-400">
+                                    দোকানের পণ্যসমূহ, পাইকারি কেনা দাম ও বিক্রয়মূল্য যুক্ত করুন। বারকোড থাকলে স্ক্যান করে নিন।
+                                </p>
+                            </div>
+
+                            {/* Step 3 */}
+                            <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 relative text-center space-y-3">
+                                <div className="w-12 h-12 rounded-full bg-emerald-600 text-white font-bold text-lg flex items-center justify-center mx-auto shadow-md shadow-emerald-600/20">
+                                    ৩
+                                </div>
+                                <h3 className="font-bold text-lg text-slate-900 dark:text-white">
+                                    বিক্রি ও লাভ উপভোগ করুন
+                                </h3>
+                                <p className="text-xs text-slate-600 dark:text-slate-400">
+                                    কাস্টমারকে ক্লিকে পণ্য বিক্রি করুন, বাকি থাকলে এন্ট্রি দিন এবং দিনশেষে আসল লাভের হিসাব দেখে বাড়ি ফিরুন।
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="mt-12 text-center">
+                            <Link href={route('about')}>
+                                <Button variant="outline" className="text-xs font-semibold gap-1.5">
+                                    সম্পূর্ণ নির্দেশিকা ও বিস্তারিত জানুন <ChevronRight className="w-3.5 h-3.5" />
+                                </Button>
+                            </Link>
+                        </div>
+                    </div>
+                </section>
+
+                {/* ── 1-Click Live Demo Section ─────────────────────────────────── */}
+                <section id="demo" className="py-20 bg-emerald-950 text-white relative overflow-hidden">
+                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                        <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
+                            <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
+                                সরাসরি পরীক্ষা করুন
+                            </span>
+                            <h2 className="text-3xl sm:text-4xl font-extrabold">
+                                কোনো অ্যাকাউন্ট ছাড়াই লাইভ ডেমো টেস্ট করুন
+                            </h2>
+                            <p className="text-emerald-200/80 text-sm">
+                                নিচের যেকোনো রোলের তথ্য দিয়ে সরাসরি লগইন করে সফটওয়্যারটির প্রতিটি ফিচার নিজ চোখে দেখে নিন।
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            {/* Role 1: Shop Owner */}
+                            <div className="bg-emerald-900/60 border border-emerald-700/60 rounded-2xl p-6 backdrop-blur-sm space-y-4">
+                                <div className="flex items-center justify-between">
+                                    <span className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                                        <Store className="w-5 h-5" />
+                                    </span>
+                                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300">
+                                        মূল ফিচার
+                                    </span>
+                                </div>
+                                <div>
+                                    <h4 className="text-lg font-bold">দোকান মালিক (Shop Owner)</h4>
+                                    <p className="text-xs text-emerald-300/80 mt-0.5">দোকানের সম্পূর্ণ নিয়ন্ত্রণ, স্টক ও আসল লাভ</p>
+                                </div>
+                                <div className="bg-emerald-950/80 p-3 rounded-lg border border-emerald-800 text-xs font-mono space-y-1">
+                                    <p><span className="text-emerald-400">ইমেইল:</span> owner@demo.com</p>
+                                    <p><span className="text-emerald-400">পাসওয়ার্ড:</span> password</p>
+                                </div>
+                                <Link href={route('login')} className="block">
+                                    <Button className="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs">
+                                        মালিক হিসেবে টেস্ট করুন
+                                    </Button>
+                                </Link>
+                            </div>
+
+                            {/* Role 2: Salesman */}
+                            <div className="bg-emerald-900/60 border border-emerald-700/60 rounded-2xl p-6 backdrop-blur-sm space-y-4">
+                                <div className="flex items-center justify-between">
+                                    <span className="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center">
+                                        <ShoppingCart className="w-5 h-5" />
+                                    </span>
+                                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300">
+                                        কাউন্টার মোড
+                                    </span>
+                                </div>
+                                <div>
+                                    <h4 className="text-lg font-bold">সেলসম্যান / ক্যাশিয়ার</h4>
+                                    <p className="text-xs text-emerald-300/80 mt-0.5">লাভ ও কেনা দাম গোপন রেখে দ্রুত বিক্রি</p>
+                                </div>
+                                <div className="bg-emerald-950/80 p-3 rounded-lg border border-emerald-800 text-xs font-mono space-y-1">
+                                    <p><span className="text-emerald-400">ইমেইল:</span> sales@demo.com</p>
+                                    <p><span className="text-emerald-400">পাসওয়ার্ড:</span> password</p>
+                                </div>
+                                <Link href={route('login')} className="block">
+                                    <Button className="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs">
+                                        সেলসম্যান হিসেবে টেস্ট করুন
+                                    </Button>
+                                </Link>
+                            </div>
+
+                            {/* Role 3: Super Admin */}
+                            <div className="bg-emerald-900/60 border border-emerald-700/60 rounded-2xl p-6 backdrop-blur-sm space-y-4">
+                                <div className="flex items-center justify-between">
+                                    <span className="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center">
+                                        <ShieldCheck className="w-5 h-5" />
+                                    </span>
+                                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300">
+                                        সেন্ট্রাল অ্যাডমিন
+                                    </span>
+                                </div>
+                                <div>
+                                    <h4 className="text-lg font-bold">সুপার অ্যাডমিন প্যানেল</h4>
+                                    <p className="text-xs text-emerald-300/80 mt-0.5">সব দোকানের তালিকা ও ১-ক্লিক ভিউ</p>
+                                </div>
+                                <div className="bg-emerald-950/80 p-3 rounded-lg border border-emerald-800 text-xs font-mono space-y-1">
+                                    <p><span className="text-emerald-400">ইমেইল:</span> admin@storemanager.app</p>
+                                    <p><span className="text-emerald-400">পাসওয়ার্ড:</span> admin123</p>
+                                </div>
+                                <Link href={route('login')} className="block">
+                                    <Button className="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs">
+                                        সুপার অ্যাডমিন টেস্ট করুন
+                                    </Button>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* ── WhatsApp Direct Support Banner ──────────────────────────── */}
+                <section className="py-12 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+                    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 p-8 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+                            <div className="space-y-2 text-center md:text-left">
+                                <h3 className="text-2xl font-extrabold">সফটওয়্যার সম্পর্কে বিস্তারিত জানতে বা পরামর্শ নিতে চান?</h3>
+                                <p className="text-emerald-100 text-sm max-w-xl">
+                                    আমাদের টিম সার্বক্ষণিক আপনার সেবায় প্রস্তুত। সরাসরি হোয়াটসঅ্যাপে মেসেজ করুন বা কল করুন।
+                                </p>
+                            </div>
+                            <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
+                                <a
+                                    href={whatsappUrl}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white text-emerald-900 hover:bg-emerald-50 font-bold text-sm shadow-md transition-all"
+                                >
+                                    <MessageCircle className="w-5 h-5 text-emerald-600" />
+                                    হোয়াটসঅ্যাপে চ্যাট করুন
+                                </a>
+                                <a
+                                    href={`tel:${whatsappNumber}`}
+                                    className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-emerald-800/80 hover:bg-emerald-800 text-white font-semibold text-sm transition-all border border-emerald-600"
+                                >
+                                    <Phone className="w-4 h-4" />
+                                    {whatsappNumber}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* ── FAQ Section ─────────────────────────────────────────────── */}
+                <section className="py-20 bg-slate-50 dark:bg-slate-950">
+                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="text-center mb-14 space-y-2">
+                            <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                                সচরাচর জিজ্ঞাসিত প্রশ্ন
+                            </span>
+                            <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white">
+                                সাধারণ ব্যবসায়ীদের প্রশ্নোত্তর
+                            </h2>
+                        </div>
+
+                        <div className="space-y-4">
+                            {[
+                                {
+                                    q: 'সফটওয়্যারটি কি মোবাইল দিয়েও ব্যবহার করা যাবে?',
+                                    a: 'হ্যাঁ, সম্পূর্ণভাবে। এটি যেকোনো স্মার্টফোন, ট্যাবলেট, ল্যাপটপ বা ডেস্কটপ কম্পিউটারের ব্রাউজারে সুন্দরভাবে কাজ করে। কোনো কিছু আলাদা ডাউনলোড বা ইনস্টল করার দরকার নেই।',
+                                },
+                                {
+                                    q: 'থার্মাল প্রিন্টারে কি রিসিট স্লিপ প্রিন্ট করা যাবে?',
+                                    a: 'হ্যাঁ! StoreManager-এ стандартный 58mm এবং 80mm পিওএস থার্মাল স্লিপ প্রিন্ট ফরম্যাট তৈরি করা আছে। বিক্রি সম্পন্ন করেই ১ ক্লিকে প্রিন্ট দিতে পারবেন।',
+                                },
+                                {
+                                    q: 'আমার দোকানের বাকির হিসাব ও লাভ-ক্ষতির তথ্য কি অন্যরা দেখতে পারবে?',
+                                    a: 'না, কখনো না। প্রতিটি দোকানের ডাটাবেস সম্পূর্ণ আলাদা এবং এনক্রিপ্ট করা। এমনকি আপনার সেলসম্যানদের জন্যও কেনা দাম ও লাভের হিসাব লুকানো থাকে।',
+                                },
+                                {
+                                    q: 'ইন্টারনেট গতি ধীর হলে কি সফটওয়্যার চলবে?',
+                                    a: 'হ্যাঁ, সফটওয়্যারটি আধুনিক প্রযুক্তিতে খুব হালকা করে বিল্ড করা হয়েছে। সাধারণ ২জি/৩জি বা মোবাইল হটস্পট ইন্টারনেট দিয়েও নিমিষেই পেজ লোড হয়।',
+                                },
+                            ].map((faq, i) => (
+                                <div key={i} className="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2">
+                                    <h4 className="font-bold text-sm sm:text-base text-slate-900 dark:text-white flex items-center gap-2">
+                                        <HelpCircle className="w-4 h-4 text-emerald-600 shrink-0" />
+                                        {faq.q}
+                                    </h4>
+                                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 pl-6 leading-relaxed">
+                                        {faq.a}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* ── Footer ─────────────────────────────────────────────────── */}
+                <footer className="bg-slate-900 text-slate-400 text-xs py-12 border-t border-slate-800">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                        <div className="space-y-3 md:col-span-2">
+                            <div className="flex items-center gap-2">
+                                <div className="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center">
+                                    <Store className="w-4 h-4" />
+                                </div>
+                                <span className="text-lg font-bold text-white">
+                                    Store<span className="text-emerald-500">Manager</span>
+                                </span>
+                            </div>
+                            <p className="text-slate-400 text-xs max-w-sm leading-relaxed">
+                                বাংলাদেশের খুচরা ব্যবসায়ীদের হিসাব-নিকাশ, স্টক ম্যানেজমেন্ট, কাস্টমার বাকি খাতা ও প্রতিদিনের খাঁটি লাভ জানার আধুনিক বিশ্বস্ত ডিজিটাল সমাধান।
+                            </p>
+                            <p className="text-emerald-400 font-semibold pt-1">
+                                হেল্পলাইন / WhatsApp: {whatsappNumber}
+                            </p>
+                        </div>
+
+                        <div>
+                            <h5 className="font-bold text-white uppercase tracking-wider text-xs mb-3">কুইক লিঙ্ক</h5>
+                            <ul className="space-y-2">
+                                <li><a href="#features" className="hover:text-white transition-colors">ফিচারসমূহ</a></li>
+                                <li><a href="#how-it-works" className="hover:text-white transition-colors">কীভাবে কাজ করে</a></li>
+                                <li><a href="#demo" className="hover:text-white transition-colors">লাইভ ডেমো টেস্ট</a></li>
+                                <li><Link href={route('about')} className="hover:text-white transition-colors">আমাদের সম্পর্কে</Link></li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h5 className="font-bold text-white uppercase tracking-wider text-xs mb-3">অ্যাকাউন্ট ও প্রবেশ</h5>
+                            <ul className="space-y-2">
+                                <li><Link href={route('login')} className="hover:text-white transition-colors">লগইন (Login)</Link></li>
+                                <li><Link href={route('register')} className="hover:text-white transition-colors">নতুন দোকান রেজিস্ট্রেশন</Link></li>
+                                <li>
+                                    <a href={whatsappUrl} target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline">
+                                        হোয়াটসঅ্যাপে সরাসরি যোগাযোগ
                                     </a>
                                 </li>
                             </ul>
                         </div>
-                        <div className="relative -mb-px aspect-[335/364] w-full shrink-0 overflow-hidden rounded-t-lg bg-[#fff2f2] lg:mb-0 lg:-ml-px lg:aspect-auto lg:w-[438px] lg:rounded-t-none lg:rounded-r-lg dark:bg-[#1D0002]">
-                            {/* Laravel Logo */}
-                            <svg
-                                className="w-full max-w-none translate-y-0 text-[#F53003] opacity-100 transition-all duration-750 dark:text-[#F61500] starting:opacity-0 motion-safe:starting:translate-y-6"
-                                viewBox="0 0 438 104"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M17.2036 -3H0V102.197H49.5189V86.7187H17.2036V-3Z"
-                                    fill="currentColor"
-                                />
-                                <path
-                                    d="M110.256 41.6337C108.061 38.1275 104.945 35.3731 100.905 33.3681C96.8667 31.3647 92.8016 30.3618 88.7131 30.3618C83.4247 30.3618 78.5885 31.3389 74.201 33.2923C69.8111 35.2456 66.0474 37.928 62.9059 41.3333C59.7643 44.7401 57.3198 48.6726 55.5754 53.1293C53.8287 57.589 52.9572 62.274 52.9572 67.1813C52.9572 72.1925 53.8287 76.8995 55.5754 81.3069C57.3191 85.7173 59.7636 89.6241 62.9059 93.0293C66.0474 96.4361 69.8119 99.1155 74.201 101.069C78.5885 103.022 83.4247 103.999 88.7131 103.999C92.8016 103.999 96.8667 102.997 100.905 100.994C104.945 98.9911 108.061 96.2359 110.256 92.7282V102.195H126.563V32.1642H110.256V41.6337ZM108.76 75.7472C107.762 78.4531 106.366 80.8078 104.572 82.8112C102.776 84.8161 100.606 86.4183 98.0637 87.6206C95.5202 88.823 92.7004 89.4238 89.6103 89.4238C86.5178 89.4238 83.7252 88.823 81.2324 87.6206C78.7388 86.4183 76.5949 84.8161 74.7998 82.8112C73.004 80.8078 71.6319 78.4531 70.6856 75.7472C69.7356 73.0421 69.2644 70.1868 69.2644 67.1821C69.2644 64.1758 69.7356 61.3205 70.6856 58.6154C71.6319 55.9102 73.004 53.5571 74.7998 51.5522C76.5949 49.5495 78.738 47.9451 81.2324 46.7427C83.7252 45.5404 86.5178 44.9396 89.6103 44.9396C92.7012 44.9396 95.5202 45.5404 98.0637 46.7427C100.606 47.9451 102.776 49.5487 104.572 51.5522C106.367 53.5571 107.762 55.9102 108.76 58.6154C109.756 61.3205 110.256 64.1758 110.256 67.1821C110.256 70.1868 109.756 73.0421 108.76 75.7472Z"
-                                    fill="currentColor"
-                                />
-                                <path
-                                    d="M242.805 41.6337C240.611 38.1275 237.494 35.3731 233.455 33.3681C229.416 31.3647 225.351 30.3618 221.262 30.3618C215.974 30.3618 211.138 31.3389 206.75 33.2923C202.36 35.2456 198.597 37.928 195.455 41.3333C192.314 44.7401 189.869 48.6726 188.125 53.1293C186.378 57.589 185.507 62.274 185.507 67.1813C185.507 72.1925 186.378 76.8995 188.125 81.3069C189.868 85.7173 192.313 89.6241 195.455 93.0293C198.597 96.4361 202.361 99.1155 206.75 101.069C211.138 103.022 215.974 103.999 221.262 103.999C225.351 103.999 229.416 102.997 233.455 100.994C237.494 98.9911 240.611 96.2359 242.805 92.7282V102.195H259.112V32.1642H242.805V41.6337ZM241.31 75.7472C240.312 78.4531 238.916 80.8078 237.122 82.8112C235.326 84.8161 233.156 86.4183 230.614 87.6206C228.07 88.823 225.251 89.4238 222.16 89.4238C219.068 89.4238 216.275 88.823 213.782 87.6206C211.289 86.4183 209.145 84.8161 207.35 82.8112C205.554 80.8078 204.182 78.4531 203.236 75.7472C202.286 73.0421 201.814 70.1868 201.814 67.1821C201.814 64.1758 202.286 61.3205 203.236 58.6154C204.182 55.9102 205.554 53.5571 207.35 51.5522C209.145 49.5495 211.288 47.9451 213.782 46.7427C216.275 45.5404 219.068 44.9396 222.16 44.9396C225.251 44.9396 228.07 45.5404 230.614 46.7427C233.156 47.9451 235.326 49.5487 237.122 51.5522C238.917 53.5571 240.312 55.9102 241.31 58.6154C242.306 61.3205 242.806 64.1758 242.806 67.1821C242.805 70.1868 242.305 73.0421 241.31 75.7472Z"
-                                    fill="currentColor"
-                                />
-                                <path
-                                    d="M438 -3H421.694V102.197H438V-3Z"
-                                    fill="currentColor"
-                                />
-                                <path
-                                    d="M139.43 102.197H155.735V48.2834H183.712V32.1665H139.43V102.197Z"
-                                    fill="currentColor"
-                                />
-                                <path
-                                    d="M324.49 32.1665L303.995 85.794L283.498 32.1665H266.983L293.748 102.197H314.242L341.006 32.1665H324.49Z"
-                                    fill="currentColor"
-                                />
-                                <path
-                                    d="M376.571 30.3656C356.603 30.3656 340.797 46.8497 340.797 67.1828C340.797 89.6597 356.094 104 378.661 104C391.29 104 399.354 99.1488 409.206 88.5848L398.189 80.0226C398.183 80.031 389.874 90.9895 377.468 90.9895C363.048 90.9895 356.977 79.3111 356.977 73.269H411.075C413.917 50.1328 398.775 30.3656 376.571 30.3656ZM357.02 61.0967C357.145 59.7487 359.023 43.3761 376.442 43.3761C393.861 43.3761 395.978 59.7464 396.099 61.0967H357.02Z"
-                                    fill="currentColor"
-                                />
-                            </svg>
+                    </div>
 
-                            {/* 13 */}
-                            <svg
-                                className="relative -mt-[6.6rem] -ml-8 w-[438px] max-w-none [--stroke-color:#1B1B18] lg:ml-0 dark:[--stroke-color:#FF750F]"
-                                viewBox="0 0 440 392"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <g className="text-[#1B1B18] opacity-100 mix-blend-darken transition-all delay-300 duration-750 dark:text-black dark:mix-blend-normal starting:opacity-0">
-                                    <mask
-                                        id="path-1-mask"
-                                        maskUnits="userSpaceOnUse"
-                                        x="-0.328613"
-                                        y="103"
-                                        width="338"
-                                        height="299"
-                                        fill="black"
-                                    >
-                                        <rect
-                                            fill="white"
-                                            x="-0.328613"
-                                            y="103"
-                                            width="338"
-                                            height="299"
-                                        />
-                                        <path d="M234.936 400.8C204.136 400.8 178.936 392.4 159.336 375.6C140.136 358.8 130.536 337 130.536 310.2H200.736C200.736 318.2 203.736 324.8 209.736 330C215.736 335.2 223.736 337.8 233.736 337.8C243.336 337.8 251.136 335 257.136 329.4C263.536 323.8 266.736 316.6 266.736 307.8C266.736 299.8 263.936 293.2 258.336 288C252.736 282.8 245.536 280.2 236.736 280.2H199.536V218.4H236.736C243.536 218.4 249.336 216 254.136 211.2C258.936 206.4 261.336 200.4 261.336 193.2C261.336 184.8 258.736 178.2 253.536 173.4C248.336 168.6 241.736 166.2 233.736 166.2C226.536 166.2 220.336 168.4 215.136 172.8C210.336 177.2 207.936 182.8 207.936 189.6H141.336C141.336 164.8 150.136 144.6 167.736 129C185.336 113 207.936 105 235.536 105C263.136 105 285.536 112.2 302.736 126.6C320.336 141 329.136 160 329.136 183.6C329.136 200.8 324.536 214.8 315.336 225.6C306.136 236 294.336 243.2 279.936 247.2C297.136 252 310.736 260.2 320.736 271.8C331.136 283.4 336.336 298 336.336 315.6C336.336 340.4 326.936 360.8 308.136 376.8C289.336 392.8 264.936 400.8 234.936 400.8Z" />
-                                        <path d="M26.8714 167.6H1.67139V105.2H94.6714V400.2H26.8714V167.6Z" />
-                                    </mask>
-                                    <path
-                                        d="M234.936 400.8C204.136 400.8 178.936 392.4 159.336 375.6C140.136 358.8 130.536 337 130.536 310.2H200.736C200.736 318.2 203.736 324.8 209.736 330C215.736 335.2 223.736 337.8 233.736 337.8C243.336 337.8 251.136 335 257.136 329.4C263.536 323.8 266.736 316.6 266.736 307.8C266.736 299.8 263.936 293.2 258.336 288C252.736 282.8 245.536 280.2 236.736 280.2H199.536V218.4H236.736C243.536 218.4 249.336 216 254.136 211.2C258.936 206.4 261.336 200.4 261.336 193.2C261.336 184.8 258.736 178.2 253.536 173.4C248.336 168.6 241.736 166.2 233.736 166.2C226.536 166.2 220.336 168.4 215.136 172.8C210.336 177.2 207.936 182.8 207.936 189.6H141.336C141.336 164.8 150.136 144.6 167.736 129C185.336 113 207.936 105 235.536 105C263.136 105 285.536 112.2 302.736 126.6C320.336 141 329.136 160 329.136 183.6C329.136 200.8 324.536 214.8 315.336 225.6C306.136 236 294.336 243.2 279.936 247.2C297.136 252 310.736 260.2 320.736 271.8C331.136 283.4 336.336 298 336.336 315.6C336.336 340.4 326.936 360.8 308.136 376.8C289.336 392.8 264.936 400.8 234.936 400.8Z"
-                                        fill="currentColor"
-                                    />
-                                    <path
-                                        d="M26.8714 167.6H1.67139V105.2H94.6714V400.2H26.8714V167.6Z"
-                                        fill="currentColor"
-                                    />
-                                    <path
-                                        d="M234.936 400.8C204.136 400.8 178.936 392.4 159.336 375.6C140.136 358.8 130.536 337 130.536 310.2H200.736C200.736 318.2 203.736 324.8 209.736 330C215.736 335.2 223.736 337.8 233.736 337.8C243.336 337.8 251.136 335 257.136 329.4C263.536 323.8 266.736 316.6 266.736 307.8C266.736 299.8 263.936 293.2 258.336 288C252.736 282.8 245.536 280.2 236.736 280.2H199.536V218.4H236.736C243.536 218.4 249.336 216 254.136 211.2C258.936 206.4 261.336 200.4 261.336 193.2C261.336 184.8 258.736 178.2 253.536 173.4C248.336 168.6 241.736 166.2 233.736 166.2C226.536 166.2 220.336 168.4 215.136 172.8C210.336 177.2 207.936 182.8 207.936 189.6H141.336C141.336 164.8 150.136 144.6 167.736 129C185.336 113 207.936 105 235.536 105C263.136 105 285.536 112.2 302.736 126.6C320.336 141 329.136 160 329.136 183.6C329.136 200.8 324.536 214.8 315.336 225.6C306.136 236 294.336 243.2 279.936 247.2C297.136 252 310.736 260.2 320.736 271.8C331.136 283.4 336.336 298 336.336 315.6C336.336 340.4 326.936 360.8 308.136 376.8C289.336 392.8 264.936 400.8 234.936 400.8Z"
-                                        stroke="var(--stroke-color)"
-                                        strokeWidth="2.4"
-                                        mask="url(#path-1-mask)"
-                                    />
-                                    <path
-                                        d="M26.8714 167.6H1.67139V105.2H94.6714V400.2H26.8714V167.6Z"
-                                        stroke="var(--stroke-color)"
-                                        strokeWidth="2.4"
-                                        mask="url(#path-1-mask)"
-                                    />
-                                </g>
-
-                                <g className="text-[#F3BEC7] opacity-100 transition-all delay-400 duration-750 dark:text-[#4B0600] starting:opacity-0 motion-safe:starting:-translate-x-[26px]">
-                                    <mask
-                                        id="path-2-mask"
-                                        maskUnits="userSpaceOnUse"
-                                        x="25.3357"
-                                        y="103"
-                                        width="338"
-                                        height="299"
-                                        fill="black"
-                                    >
-                                        <rect
-                                            fill="white"
-                                            x="25.3357"
-                                            y="103"
-                                            width="338"
-                                            height="299"
-                                        />
-                                        <path d="M260.6 400.8C229.8 400.8 204.6 392.4 185 375.6C165.8 358.8 156.2 337 156.2 310.2H226.4C226.4 318.2 229.4 324.8 235.4 330C241.4 335.2 249.4 337.8 259.4 337.8C269 337.8 276.8 335 282.8 329.4C289.2 323.8 292.4 316.6 292.4 307.8C292.4 299.8 289.6 293.2 284 288C278.4 282.8 271.2 280.2 262.4 280.2H225.2V218.4H262.4C269.2 218.4 275 216 279.8 211.2C284.6 206.4 287 200.4 287 193.2C287 184.8 284.4 178.2 279.2 173.4C274 168.6 267.4 166.2 259.4 166.2C252.2 166.2 246 168.4 240.8 172.8C236 177.2 233.6 182.8 233.6 189.6H167C167 164.8 175.8 144.6 193.4 129C211 113 233.6 105 261.2 105C288.8 105 311.2 112.2 328.4 126.6C346 141 354.8 160 354.8 183.6C354.8 200.8 350.2 214.8 341 225.6C331.8 236 320 243.2 305.6 247.2C322.8 252 336.4 260.2 346.4 271.8C356.8 283.4 362 298 362 315.6C362 340.4 352.6 360.8 333.8 376.8C315 392.8 290.6 400.8 260.6 400.8Z" />
-                                        <path d="M52.5357 167.6H27.3357V105.2H120.336V400.2H52.5357V167.6Z" />
-                                    </mask>
-                                    <path
-                                        d="M260.6 400.8C229.8 400.8 204.6 392.4 185 375.6C165.8 358.8 156.2 337 156.2 310.2H226.4C226.4 318.2 229.4 324.8 235.4 330C241.4 335.2 249.4 337.8 259.4 337.8C269 337.8 276.8 335 282.8 329.4C289.2 323.8 292.4 316.6 292.4 307.8C292.4 299.8 289.6 293.2 284 288C278.4 282.8 271.2 280.2 262.4 280.2H225.2V218.4H262.4C269.2 218.4 275 216 279.8 211.2C284.6 206.4 287 200.4 287 193.2C287 184.8 284.4 178.2 279.2 173.4C274 168.6 267.4 166.2 259.4 166.2C252.2 166.2 246 168.4 240.8 172.8C236 177.2 233.6 182.8 233.6 189.6H167C167 164.8 175.8 144.6 193.4 129C211 113 233.6 105 261.2 105C288.8 105 311.2 112.2 328.4 126.6C346 141 354.8 160 354.8 183.6C354.8 200.8 350.2 214.8 341 225.6C331.8 236 320 243.2 305.6 247.2C322.8 252 336.4 260.2 346.4 271.8C356.8 283.4 362 298 362 315.6C362 340.4 352.6 360.8 333.8 376.8C315 392.8 290.6 400.8 260.6 400.8Z"
-                                        fill="currentColor"
-                                    />
-                                    <path
-                                        d="M52.5357 167.6H27.3357V105.2H120.336V400.2H52.5357V167.6Z"
-                                        fill="currentColor"
-                                    />
-                                    <path
-                                        d="M260.6 400.8C229.8 400.8 204.6 392.4 185 375.6C165.8 358.8 156.2 337 156.2 310.2H226.4C226.4 318.2 229.4 324.8 235.4 330C241.4 335.2 249.4 337.8 259.4 337.8C269 337.8 276.8 335 282.8 329.4C289.2 323.8 292.4 316.6 292.4 307.8C292.4 299.8 289.6 293.2 284 288C278.4 282.8 271.2 280.2 262.4 280.2H225.2V218.4H262.4C269.2 218.4 275 216 279.8 211.2C284.6 206.4 287 200.4 287 193.2C287 184.8 284.4 178.2 279.2 173.4C274 168.6 267.4 166.2 259.4 166.2C252.2 166.2 246 168.4 240.8 172.8C236 177.2 233.6 182.8 233.6 189.6H167C167 164.8 175.8 144.6 193.4 129C211 113 233.6 105 261.2 105C288.8 105 311.2 112.2 328.4 126.6C346 141 354.8 160 354.8 183.6C354.8 200.8 350.2 214.8 341 225.6C331.8 236 320 243.2 305.6 247.2C322.8 252 336.4 260.2 346.4 271.8C356.8 283.4 362 298 362 315.6C362 340.4 352.6 360.8 333.8 376.8C315 392.8 290.6 400.8 260.6 400.8Z"
-                                        stroke="var(--stroke-color)"
-                                        strokeWidth="2.4"
-                                        mask="url(#path-2-mask)"
-                                    />
-                                    <path
-                                        d="M52.5357 167.6H27.3357V105.2H120.336V400.2H52.5357V167.6Z"
-                                        stroke="var(--stroke-color)"
-                                        strokeWidth="2.4"
-                                        mask="url(#path-2-mask)"
-                                    />
-                                </g>
-
-                                <g className="text-[#F8B803] opacity-100 mix-blend-color transition-all delay-400 duration-750 dark:text-[#391800] dark:mix-blend-hard-light starting:opacity-0 motion-safe:starting:-translate-x-[51px]">
-                                    <mask
-                                        id="path-3-mask"
-                                        maskUnits="userSpaceOnUse"
-                                        x="51"
-                                        y="103"
-                                        width="338"
-                                        height="299"
-                                        fill="black"
-                                    >
-                                        <rect
-                                            fill="white"
-                                            x="51"
-                                            y="103"
-                                            width="338"
-                                            height="299"
-                                        />
-                                        <path d="M286.264 400.8C255.464 400.8 230.264 392.4 210.664 375.6C191.464 358.8 181.864 337 181.864 310.2H252.064C252.064 318.2 255.064 324.8 261.064 330C267.064 335.2 275.064 337.8 285.064 337.8C294.664 337.8 302.464 335 308.464 329.4C314.864 323.8 318.064 316.6 318.064 307.8C318.064 299.8 315.264 293.2 309.664 288C304.064 282.8 296.864 280.2 288.064 280.2H250.864V218.4H288.064C294.864 218.4 300.664 216 305.464 211.2C310.264 206.4 312.664 200.4 312.664 193.2C312.664 184.8 310.064 178.2 304.864 173.4C299.664 168.6 293.064 166.2 285.064 166.2C277.864 166.2 271.664 168.4 266.464 172.8C261.664 177.2 259.264 182.8 259.264 189.6H192.664C192.664 164.8 201.464 144.6 219.064 129C236.664 113 259.264 105 286.864 105C314.464 105 336.864 112.2 354.064 126.6C371.664 141 380.464 160 380.464 183.6C380.464 200.8 375.864 214.8 366.664 225.6C357.464 236 345.664 243.2 331.264 247.2C348.464 252 362.064 260.2 372.064 271.8C382.464 283.4 387.664 298 387.664 315.6C387.664 340.4 378.264 360.8 359.464 376.8C340.664 392.8 316.264 400.8 286.264 400.8Z" />
-                                        <path d="M78.2 167.6H53V105.2H146V400.2H78.2V167.6Z" />
-                                    </mask>
-                                    <path
-                                        d="M286.264 400.8C255.464 400.8 230.264 392.4 210.664 375.6C191.464 358.8 181.864 337 181.864 310.2H252.064C252.064 318.2 255.064 324.8 261.064 330C267.064 335.2 275.064 337.8 285.064 337.8C294.664 337.8 302.464 335 308.464 329.4C314.864 323.8 318.064 316.6 318.064 307.8C318.064 299.8 315.264 293.2 309.664 288C304.064 282.8 296.864 280.2 288.064 280.2H250.864V218.4H288.064C294.864 218.4 300.664 216 305.464 211.2C310.264 206.4 312.664 200.4 312.664 193.2C312.664 184.8 310.064 178.2 304.864 173.4C299.664 168.6 293.064 166.2 285.064 166.2C277.864 166.2 271.664 168.4 266.464 172.8C261.664 177.2 259.264 182.8 259.264 189.6H192.664C192.664 164.8 201.464 144.6 219.064 129C236.664 113 259.264 105 286.864 105C314.464 105 336.864 112.2 354.064 126.6C371.664 141 380.464 160 380.464 183.6C380.464 200.8 375.864 214.8 366.664 225.6C357.464 236 345.664 243.2 331.264 247.2C348.464 252 362.064 260.2 372.064 271.8C382.464 283.4 387.664 298 387.664 315.6C387.664 340.4 378.264 360.8 359.464 376.8C340.664 392.8 316.264 400.8 286.264 400.8Z"
-                                        fill="currentColor"
-                                    />
-                                    <path
-                                        d="M78.2 167.6H53V105.2H146V400.2H78.2V167.6Z"
-                                        fill="currentColor"
-                                    />
-                                    <path
-                                        d="M286.264 400.8C255.464 400.8 230.264 392.4 210.664 375.6C191.464 358.8 181.864 337 181.864 310.2H252.064C252.064 318.2 255.064 324.8 261.064 330C267.064 335.2 275.064 337.8 285.064 337.8C294.664 337.8 302.464 335 308.464 329.4C314.864 323.8 318.064 316.6 318.064 307.8C318.064 299.8 315.264 293.2 309.664 288C304.064 282.8 296.864 280.2 288.064 280.2H250.864V218.4H288.064C294.864 218.4 300.664 216 305.464 211.2C310.264 206.4 312.664 200.4 312.664 193.2C312.664 184.8 310.064 178.2 304.864 173.4C299.664 168.6 293.064 166.2 285.064 166.2C277.864 166.2 271.664 168.4 266.464 172.8C261.664 177.2 259.264 182.8 259.264 189.6H192.664C192.664 164.8 201.464 144.6 219.064 129C236.664 113 259.264 105 286.864 105C314.464 105 336.864 112.2 354.064 126.6C371.664 141 380.464 160 380.464 183.6C380.464 200.8 375.864 214.8 366.664 225.6C357.464 236 345.664 243.2 331.264 247.2C348.464 252 362.064 260.2 372.064 271.8C382.464 283.4 387.664 298 387.664 315.6C387.664 340.4 378.264 360.8 359.464 376.8C340.664 392.8 316.264 400.8 286.264 400.8Z"
-                                        stroke="var(--stroke-color)"
-                                        strokeWidth="2.4"
-                                        mask="url(#path-3-mask)"
-                                    />
-                                    <path
-                                        d="M78.2 167.6H53V105.2H146V400.2H78.2V167.6Z"
-                                        stroke="var(--stroke-color)"
-                                        strokeWidth="2.4"
-                                        mask="url(#path-3-mask)"
-                                    />
-                                </g>
-
-                                <g className="text-[#F3BEC7] opacity-100 mix-blend-multiply transition-all delay-400 duration-750 dark:text-[#733000] dark:mix-blend-normal starting:opacity-0 motion-safe:starting:-translate-x-[78px]">
-                                    <mask
-                                        id="path-4-mask"
-                                        maskUnits="userSpaceOnUse"
-                                        x="76.6643"
-                                        y="103"
-                                        width="338"
-                                        height="299"
-                                        fill="black"
-                                    >
-                                        <rect
-                                            fill="white"
-                                            x="76.6643"
-                                            y="103"
-                                            width="338"
-                                            height="299"
-                                        />
-                                        <path d="M311.929 400.8C281.129 400.8 255.929 392.4 236.329 375.6C217.129 358.8 207.529 337 207.529 310.2H277.729C277.729 318.2 280.729 324.8 286.729 330C292.729 335.2 300.729 337.8 310.729 337.8C320.329 337.8 328.129 335 334.129 329.4C340.529 323.8 343.729 316.6 343.729 307.8C343.729 299.8 340.929 293.2 335.329 288C329.729 282.8 322.529 280.2 313.729 280.2H276.529V218.4H313.729C320.529 218.4 326.329 216 331.129 211.2C335.929 206.4 338.329 200.4 338.329 193.2C338.329 184.8 335.729 178.2 330.529 173.4C325.329 168.6 318.729 166.2 310.729 166.2C303.529 166.2 297.329 168.4 292.129 172.8C287.329 177.2 284.929 182.8 284.929 189.6H218.329C218.329 164.8 227.129 144.6 244.729 129C262.329 113 284.929 105 312.529 105C340.129 105 362.529 112.2 379.729 126.6C397.329 141 406.129 160 406.129 183.6C406.129 200.8 401.529 214.8 392.329 225.6C383.129 236 371.329 243.2 356.929 247.2C374.129 252 387.729 260.2 397.729 271.8C408.129 283.4 413.329 298 413.329 315.6C413.329 340.4 403.929 360.8 385.129 376.8C366.329 392.8 341.929 400.8 311.929 400.8Z" />
-                                        <path d="M103.864 167.6H78.6643V105.2H171.664V400.2H103.864V167.6Z" />
-                                    </mask>
-                                    <path
-                                        d="M311.929 400.8C281.129 400.8 255.929 392.4 236.329 375.6C217.129 358.8 207.529 337 207.529 310.2H277.729C277.729 318.2 280.729 324.8 286.729 330C292.729 335.2 300.729 337.8 310.729 337.8C320.329 337.8 328.129 335 334.129 329.4C340.529 323.8 343.729 316.6 343.729 307.8C343.729 299.8 340.929 293.2 335.329 288C329.729 282.8 322.529 280.2 313.729 280.2H276.529V218.4H313.729C320.529 218.4 326.329 216 331.129 211.2C335.929 206.4 338.329 200.4 338.329 193.2C338.329 184.8 335.729 178.2 330.529 173.4C325.329 168.6 318.729 166.2 310.729 166.2C303.529 166.2 297.329 168.4 292.129 172.8C287.329 177.2 284.929 182.8 284.929 189.6H218.329C218.329 164.8 227.129 144.6 244.729 129C262.329 113 284.929 105 312.529 105C340.129 105 362.529 112.2 379.729 126.6C397.329 141 406.129 160 406.129 183.6C406.129 200.8 401.529 214.8 392.329 225.6C383.129 236 371.329 243.2 356.929 247.2C374.129 252 387.729 260.2 397.729 271.8C408.129 283.4 413.329 298 413.329 315.6C413.329 340.4 403.929 360.8 385.129 376.8C366.329 392.8 341.929 400.8 311.929 400.8Z"
-                                        fill="currentColor"
-                                    />
-                                    <path
-                                        d="M103.864 167.6H78.6643V105.2H171.664V400.2H103.864V167.6Z"
-                                        fill="currentColor"
-                                    />
-                                    <path
-                                        d="M311.929 400.8C281.129 400.8 255.929 392.4 236.329 375.6C217.129 358.8 207.529 337 207.529 310.2H277.729C277.729 318.2 280.729 324.8 286.729 330C292.729 335.2 300.729 337.8 310.729 337.8C320.329 337.8 328.129 335 334.129 329.4C340.529 323.8 343.729 316.6 343.729 307.8C343.729 299.8 340.929 293.2 335.329 288C329.729 282.8 322.529 280.2 313.729 280.2H276.529V218.4H313.729C320.529 218.4 326.329 216 331.129 211.2C335.929 206.4 338.329 200.4 338.329 193.2C338.329 184.8 335.729 178.2 330.529 173.4C325.329 168.6 318.729 166.2 310.729 166.2C303.529 166.2 297.329 168.4 292.129 172.8C287.329 177.2 284.929 182.8 284.929 189.6H218.329C218.329 164.8 227.129 144.6 244.729 129C262.329 113 284.929 105 312.529 105C340.129 105 362.529 112.2 379.729 126.6C397.329 141 406.129 160 406.129 183.6C406.129 200.8 401.529 214.8 392.329 225.6C383.129 236 371.329 243.2 356.929 247.2C374.129 252 387.729 260.2 397.729 271.8C408.129 283.4 413.329 298 413.329 315.6C413.329 340.4 403.929 360.8 385.129 376.8C366.329 392.8 341.929 400.8 311.929 400.8Z"
-                                        stroke="var(--stroke-color)"
-                                        strokeWidth="2.4"
-                                        mask="url(#path-4-mask)"
-                                    />
-                                    <path
-                                        d="M103.864 167.6H78.6643V105.2H171.664V400.2H103.864V167.6Z"
-                                        stroke="var(--stroke-color)"
-                                        strokeWidth="2.4"
-                                        mask="url(#path-4-mask)"
-                                    />
-                                </g>
-
-                                <g className="text-[#F3BEC7] opacity-100 mix-blend-hard-light transition-all delay-400 duration-750 dark:text-[#4B0600] starting:opacity-0 motion-safe:starting:-translate-x-[102px]">
-                                    <mask
-                                        id="path-5-mask"
-                                        maskUnits="userSpaceOnUse"
-                                        x="102.329"
-                                        y="103"
-                                        width="338"
-                                        height="299"
-                                        fill="black"
-                                    >
-                                        <rect
-                                            fill="white"
-                                            x="102.329"
-                                            y="103"
-                                            width="338"
-                                            height="299"
-                                        />
-                                        <path d="M337.593 400.8C306.793 400.8 281.593 392.4 261.993 375.6C242.793 358.8 233.193 337 233.193 310.2H303.393C303.393 318.2 306.393 324.8 312.393 330C318.393 335.2 326.393 337.8 336.393 337.8C345.993 337.8 353.793 335 359.793 329.4C366.193 323.8 369.393 316.6 369.393 307.8C369.393 299.8 366.593 293.2 360.993 288C355.393 282.8 348.193 280.2 339.393 280.2H302.193V218.4H339.393C346.193 218.4 351.993 216 356.793 211.2C361.593 206.4 363.993 200.4 363.993 193.2C363.993 184.8 361.393 178.2 356.193 173.4C350.993 168.6 344.393 166.2 336.393 166.2C329.193 166.2 322.993 168.4 317.793 172.8C312.993 177.2 310.593 182.8 310.593 189.6H243.993C243.993 164.8 252.793 144.6 270.393 129C287.993 113 310.593 105 338.193 105C365.793 105 388.193 112.2 405.393 126.6C422.993 141 431.793 160 431.793 183.6C431.793 200.8 427.193 214.8 417.993 225.6C408.793 236 396.993 243.2 382.593 247.2C399.793 252 413.393 260.2 423.393 271.8C433.793 283.4 438.993 298 438.993 315.6C438.993 340.4 429.593 360.8 410.793 376.8C391.993 392.8 367.593 400.8 337.593 400.8Z" />
-                                        <path d="M129.529 167.6H104.329V105.2H197.329V400.2H129.529V167.6Z" />
-                                    </mask>
-                                    <path
-                                        d="M337.593 400.8C306.793 400.8 281.593 392.4 261.993 375.6C242.793 358.8 233.193 337 233.193 310.2H303.393C303.393 318.2 306.393 324.8 312.393 330C318.393 335.2 326.393 337.8 336.393 337.8C345.993 337.8 353.793 335 359.793 329.4C366.193 323.8 369.393 316.6 369.393 307.8C369.393 299.8 366.593 293.2 360.993 288C355.393 282.8 348.193 280.2 339.393 280.2H302.193V218.4H339.393C346.193 218.4 351.993 216 356.793 211.2C361.593 206.4 363.993 200.4 363.993 193.2C363.993 184.8 361.393 178.2 356.193 173.4C350.993 168.6 344.393 166.2 336.393 166.2C329.193 166.2 322.993 168.4 317.793 172.8C312.993 177.2 310.593 182.8 310.593 189.6H243.993C243.993 164.8 252.793 144.6 270.393 129C287.993 113 310.593 105 338.193 105C365.793 105 388.193 112.2 405.393 126.6C422.993 141 431.793 160 431.793 183.6C431.793 200.8 427.193 214.8 417.993 225.6C408.793 236 396.993 243.2 382.593 247.2C399.793 252 413.393 260.2 423.393 271.8C433.793 283.4 438.993 298 438.993 315.6C438.993 340.4 429.593 360.8 410.793 376.8C391.993 392.8 367.593 400.8 337.593 400.8Z"
-                                        fill="currentColor"
-                                    />
-                                    <path
-                                        d="M129.529 167.6H104.329V105.2H197.329V400.2H129.529V167.6Z"
-                                        fill="currentColor"
-                                    />
-                                    <path
-                                        d="M337.593 400.8C306.793 400.8 281.593 392.4 261.993 375.6C242.793 358.8 233.193 337 233.193 310.2H303.393C303.393 318.2 306.393 324.8 312.393 330C318.393 335.2 326.393 337.8 336.393 337.8C345.993 337.8 353.793 335 359.793 329.4C366.193 323.8 369.393 316.6 369.393 307.8C369.393 299.8 366.593 293.2 360.993 288C355.393 282.8 348.193 280.2 339.393 280.2H302.193V218.4H339.393C346.193 218.4 351.993 216 356.793 211.2C361.593 206.4 363.993 200.4 363.993 193.2C363.993 184.8 361.393 178.2 356.193 173.4C350.993 168.6 344.393 166.2 336.393 166.2C329.193 166.2 322.993 168.4 317.793 172.8C312.993 177.2 310.593 182.8 310.593 189.6H243.993C243.993 164.8 252.793 144.6 270.393 129C287.993 113 310.593 105 338.193 105C365.793 105 388.193 112.2 405.393 126.6C422.993 141 431.793 160 431.793 183.6C431.793 200.8 427.193 214.8 417.993 225.6C408.793 236 396.993 243.2 382.593 247.2C399.793 252 413.393 260.2 423.393 271.8C433.793 283.4 438.993 298 438.993 315.6C438.993 340.4 429.593 360.8 410.793 376.8C391.993 392.8 367.593 400.8 337.593 400.8Z"
-                                        stroke="var(--stroke-color)"
-                                        strokeWidth="2.4"
-                                        mask="url(#path-5-mask)"
-                                    />
-                                    <path
-                                        d="M129.529 167.6H104.329V105.2H197.329V400.2H129.529V167.6Z"
-                                        stroke="var(--stroke-color)"
-                                        strokeWidth="2.4"
-                                        mask="url(#path-5-mask)"
-                                    />
-                                </g>
-                            </svg>
-                            <div className="absolute inset-0 rounded-t-lg shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] lg:rounded-t-none lg:rounded-r-lg dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]"></div>
-                        </div>
-                    </main>
-                </div>
-                <div className="hidden h-14.5 lg:block"></div>
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-slate-800 text-center text-slate-500">
+                        <p>© {new Date().getFullYear()} StoreManager. সর্বস্বত্ব সংরক্ষিত। বাংলাদেশের খুচরা ব্যবসায়ীদের বিশ্বস্ত সহযোগী।</p>
+                    </div>
+                </footer>
             </div>
         </>
     );
