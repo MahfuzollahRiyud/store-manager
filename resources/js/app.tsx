@@ -11,10 +11,10 @@ if (typeof window !== 'undefined') {
     (window as any).route = route;
 }
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+const appName = import.meta.env.VITE_APP_NAME || 'StoreManager';
 
 void createInertiaApp({
-    title: (title) => (title ? `${title} - ${appName}` : appName),
+    title: (title) => (title ? `${title} | StoreManager` : 'StoreManager — মুদি ও রিটেইল দোকানের ডিজিটাল সফটওয়্যার'),
     layout: (name) => {
         switch (true) {
             case name === 'welcome':
